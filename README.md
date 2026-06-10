@@ -1,5 +1,10 @@
 # Tool-Using Agent: Calculator and Search Demo
 
+![Project overview](assets/readme_project_overview.png)
+
+Figure: minimal agent workflow for routing tasks to tools and saving the trace.
+
+
 ## Motivation
 
 Agentic AI systems become more useful when they can choose tools instead of trying to answer everything from memory. This project demonstrates a small tool-using agent with two tools: calculator and local document search.
