@@ -1,0 +1,5 @@
+question,selected_tool,tool_input,answer
+What is 17 * 23 + 41?,calculator,17 * 23 + 41,432
+What does RAG do before answering?,search,rag,RAG retrieves relevant documents before generating an answer.
+What is (128 / 4) + 19?,calculator,(128 / 4) + 19,51.0
+Why use Edge AI near sensors?,search,edge ai,Edge AI runs models near sensors to reduce latency and bandwidth use.
