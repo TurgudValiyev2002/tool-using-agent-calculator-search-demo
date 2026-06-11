@@ -57,7 +57,7 @@ This is a useful failure. It shows why real tool agents need better intent class
 
 ## Conclusion
 
-The project now includes both successes and limitations. The next step is to replace the hand-written router with a learned or LLM-based router and evaluate it on a larger task set.
+The project includes both successes and limitations. The next step is to replace the hand-written router with a learned or LLM-based router and evaluate it on a larger task set.
 
 ## How To Run
 

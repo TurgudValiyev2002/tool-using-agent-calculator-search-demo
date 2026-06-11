@@ -22,4 +22,4 @@ The agent works on simple tasks but struggles when a question contains both a nu
 
 ## Conclusion
 
-The demo is now more honest because it includes failure cases. A stronger version should use a better router and a larger task set.
+The demo is more useful because it includes failure cases. A stronger version should use a better router and a larger task set.
