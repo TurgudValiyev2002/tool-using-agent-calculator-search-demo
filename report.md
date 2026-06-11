@@ -1,29 +1,25 @@
-# Report: Tool-Using Agent Demo
+# One-Page Report: Tool-Using Agent Demo
 
 ## Motivation
 
-We built a small agent demo to understand how a system can use tools for tasks that require calculation or retrieval.
-
-## Problem
-
-The agent handled four tasks: two arithmetic questions and two knowledge questions.
+Tool agents should be tested on routing mistakes, not only successful examples. We added ambiguous and unsupported tasks to make the evaluation more realistic.
 
 ## Method
 
-Calculator tasks used a safe AST evaluator. Search tasks retrieved answers from a small local document store.
+The agent routes each question to a calculator, local search, or no tool. Arithmetic is evaluated with a restricted AST parser. Search uses a small local knowledge base.
 
-## Hyperparameters
+## Evaluation
 
-No model was trained. The setup used 4 tasks, 2 tools, and 3 local documents.
+The task set has 11 examples, including clean calculator questions, search questions, unsupported questions, and ambiguous mixed questions.
 
 ## Results
 
-The agent selected the calculator twice and search twice. The full trace and tool-usage chart were saved in `results/`.
+Tool selection accuracy was 0.8182. Answer check accuracy was 0.9091. There were two no-tool/failure cases.
 
 ## Interpretation
 
-The workflow demonstrates tool routing and traceability. The limitation is that the routing policy is fixed and not language-model based.
+The agent works on simple tasks but struggles when a question contains both a number and a conceptual request. This caused a calculator routing error. The result shows the limitation of hand-written routing rules.
 
 ## Conclusion
 
-Tool use is a core idea in agentic AI. This project gives a clear minimal example.
+The demo is now more honest because it includes failure cases. A stronger version should use a better router and a larger task set.

@@ -1,0 +1,5 @@
+metric,value
+tasks,11.0
+tool_selection_accuracy,0.8181818181818182
+answer_check_accuracy,0.9090909090909091
+failure_or_no_tool_cases,2.0

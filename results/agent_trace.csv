@@ -1,5 +1,12 @@
-question,selected_tool,tool_input,answer
-What is 17 * 23 + 41?,calculator,17 * 23 + 41,432
-What does RAG do before answering?,search,rag,RAG retrieves relevant documents before generating an answer.
-What is (128 / 4) + 19?,calculator,(128 / 4) + 19,51.0
-Why use Edge AI near sensors?,search,edge ai,Edge AI runs models near sensors to reduce latency and bandwidth use.
+question,expected_tool,selected_tool,tool_input,answer,tool_correct,answer_contains_expected
+What is 17 * 23 + 41?,calculator,calculator,17 * 23 + 41,432,True,True
+What does RAG do before answering?,search,search,rag,RAG retrieves relevant documents before generating an answer.,True,True
+What is (128 / 4) + 19?,calculator,calculator,(128 / 4) + 19,51.0,True,True
+Why use Edge AI near sensors?,search,search,edge ai,Edge AI runs models near sensors to reduce latency and bandwidth use.,True,True
+How does quantization reduce model memory?,search,search,quantization,Quantization stores model weights with fewer bits to reduce memory use.,True,True
+What is 14 squared minus 9?,calculator,calculator,14 * 14 - 9,187,True,True
+Which method removes low-importance weights?,search,search,pruning,Pruning removes low-importance weights to reduce model size and computation.,True,True
+Calculate the memory after compression,none,none,,no available tool or task needs more information,True,True
+Tell me something about tomorrow's weather,none,none,,no available tool or task needs more information,True,True
+Can you compare 8-bit quantization with pruning?,search,calculator,quantization pruning,calculator failed because the input was not a valid arithmetic expression,False,False
+What is 2 plus the main risk of hallucination?,none,calculator,,needs more information,False,True

@@ -1,45 +1,63 @@
-# Tool-Using Agent: Calculator and Search Demo
+# Tool-Using Agent Calculator and Search Demo
 
 ![Project overview](assets/readme_project_overview.png)
 
-Figure: minimal agent workflow for routing tasks to tools and saving the trace.
-
+Figure: a simple agent routes questions to a calculator, a search tool, or no tool when the task is unsupported.
 
 ## Motivation
 
-Agentic AI systems become more useful when they can choose tools instead of trying to answer everything from memory. This project demonstrates a small tool-using agent with two tools: calculator and local document search.
+Tool-using agents should be evaluated on both successful calls and failure cases. A demo that only shows correct examples hides the hardest part of agent design: deciding when a tool is needed and when the available tools are not enough.
 
 ## Project Goal
 
-We built a simple agent loop that selects a tool, sends the right input to that tool, and saves the full trace.
+We built a small rule-based agent that chooses among:
 
-## Problem Description
+- Calculator
+- Search over a small local knowledge base
+- No tool / needs more information
 
-The agent receives four tasks: two arithmetic questions and two knowledge questions. Arithmetic questions should go to the calculator, while knowledge questions should go to local search.
+We then measured tool-selection accuracy and answer-check accuracy.
+
+## Dataset
+
+The evaluation contains 11 tasks. Some are clean calculator or search tasks, while others are ambiguous or unsupported. The ambiguous examples are important because they reveal routing mistakes.
 
 ## Tools
 
-Python, pandas, matplotlib, a safe arithmetic evaluator, and a small local search function.
+Python, pandas, matplotlib, and safe Python AST parsing for arithmetic expressions.
 
 ## Method
 
-The agent uses a fixed routing policy: calculator tasks are evaluated with a safe AST-based evaluator, and search tasks retrieve from a small local document dictionary.
-
-## Hyperparameters
-
-No model was trained. The fixed settings are 4 tasks, 2 tools, and 3 local search documents.
+The agent uses simple routing rules. Calculator expressions are evaluated with a restricted AST evaluator. Search queries are matched against local documents about FedAvg, RAG, Edge AI, quantization, and pruning.
 
 ## Results
 
-The agent used the calculator twice and search twice. The full trace is saved in `results/agent_trace.csv`, and tool counts are saved in `results/tool_usage.csv`.
+| Metric | Value |
+|---|---:|
+| Tasks | 11 |
+| Tool selection accuracy | 0.8182 |
+| Answer check accuracy | 0.9091 |
+| Failure/no-tool cases | 2 |
+
+![Tool usage](results/tool_usage.png)
+
+![Agent metrics](results/agent_metrics.png)
+
+Result files:
+
+- `results/agent_trace.csv`
+- `results/tool_usage.csv`
+- `results/agent_metrics.csv`
 
 ## Interpretation
 
-The demo shows the basic structure of tool use: decide the tool, prepare tool input, execute the tool, and return the answer. The main limitation is that routing is rule-based rather than learned or LLM-driven.
+The agent handles simple calculator and search tasks, but it fails on an ambiguous question that contains a number and a knowledge request. The router sees the number and chooses the calculator even though search would be more appropriate.
+
+This is a useful failure. It shows why real tool agents need better intent classification, tool schemas, validation, and fallback behavior.
 
 ## Conclusion
 
-Tool use is a practical pattern for agentic systems. A stronger version should add natural language routing, error handling, and tool-result verification.
+The project now includes both successes and limitations. The next step is to replace the hand-written router with a learned or LLM-based router and evaluate it on a larger task set.
 
 ## How To Run
 
